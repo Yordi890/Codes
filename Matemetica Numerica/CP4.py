@@ -1,5 +1,9 @@
-from numpy import diff, all
+"""
+Clase Práctica # 4
+Autor: Lázaro Hernández Pérez
+"""
 
+from numpy import diff, all
 
 def xdistant(lista):
     # Calcula las diferencias entre elementos adyacentes.
@@ -8,6 +12,8 @@ def xdistant(lista):
 
 
 def trapezoid_method(Xs, Ys):
+    assert len(Xs) == len(
+        Ys), "Las listas de los valores para x e y tienen una cantidad diferente de valores"
     xdist = xdistant(Xs)
     result = 0.0
     if not xdist:
@@ -20,6 +26,9 @@ def trapezoid_method(Xs, Ys):
 
 
 def simpson_method(Xs, Ys):
+    assert len(Xs) == len(
+        Ys), "Las listas de los valores para x e y tienen una cantidad diferente de valores"
+    assert (len(Xs)-1) % 2 == 0 and len(Xs)!=1 , "No existe una cantidad par de subintervalos"
     sum = Ys[0]+Ys[len(Ys)-1]
     for i in range(len(Ys)):
         if i != 0 and i != len(Ys)-1:
@@ -29,7 +38,8 @@ def simpson_method(Xs, Ys):
             sum += mul*Ys[i]
     return abs(((Xs[1]-Xs[0])/3)*sum)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     print(trapezoid_method([0, 10, 20, 30, 40, 50, 60],
           [3.7, 3.0, 2.5, 2.0, 1.7, 1.4, 1.1]))
     print(simpson_method([0, 10, 20, 30, 40, 50, 60],
