@@ -1,0 +1,12 @@
+list = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+list.sort()
+print(list)
+list.sort(reverse=True)
+print(list)
+max = max(list)
+print(max)
+min = min(list)
+print(min)
+print(1 in list)
+print(list.index(1))
+print(list.count(1, "alternative"))
